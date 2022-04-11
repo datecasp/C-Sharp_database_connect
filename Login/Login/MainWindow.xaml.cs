@@ -39,7 +39,6 @@ namespace Login
                 {
                 
                     connection.Open();
-                    MessageBox.Show(connection.State.ToString());
 
                     /*****************************************************
                      * 
