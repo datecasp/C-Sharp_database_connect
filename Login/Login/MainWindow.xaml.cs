@@ -23,6 +23,7 @@ namespace Login
     /// </summary>
     public partial class MainWindow : Window
     {
+        //This should be assigned in a private file for security
         readonly string strConn = "Data Source=127.0.0.1; Initial Catalog=tec; User ID=test1; Password=1234;";
         
         public MainWindow()
@@ -42,32 +43,36 @@ namespace Login
 
                     /*****************************************************
                      * 
-                     *  Montar if para SELECT con las credenciales 
                      *  
-                     *  De los TextBoxs
+                     *  to check if user credentials are ok, create a SELECT command to use
                      *  
-                     *  Si devuelve filas, login correcto
+                     *  reading the txtBox filled with user´s data
                      *  
-                     *  Si no devuelve filas, Login erroneo
+                     *  With a datareader ask the database.
+                     *  
+                     *  If user filled data matchs a register,
+                     *  
+                     *  the datareader will have rows, 
+                     *  
+                     *  so User/Password are ok and Login is correct
                      * 
                      * *****************************************************/
 
                     MySqlCommand cmd = connection.CreateCommand(); 
                     cmd.CommandText = "SELECT user, pwd FROM credenciales WHERE user='"+txtUserIn.Text+
                         "' AND pwd='"+txtPwdIn.Text+"';";
-                    MessageBox.Show(cmd.CommandText.ToString());
 
                     MySqlDataReader dr = cmd.ExecuteReader();
 
                     if (dr.HasRows)
                     {
-                        MessageBox.Show("LOGIN CORRECTO");
+                        MessageBox.Show("LOGIN OK");
                     }
                     else
                     {
-                        MessageBox.Show("USER/PASSWORD INCORRECTO");
+                        MessageBox.Show("WRONG USER/PASSWORD");
                     }
-                    
+                    connection.Close(); 
                 }
             }
             catch (SqlException ex)
