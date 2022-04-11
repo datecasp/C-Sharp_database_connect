@@ -60,7 +60,7 @@ namespace Login
 
                     MySqlCommand cmd = connection.CreateCommand(); 
                     cmd.CommandText = "SELECT user, pwd FROM credenciales WHERE user='"+txtUserIn.Text+
-                        "' AND pwd='"+txtPwdIn.Text+"';";
+                        "' AND pwd='"+txtPwdIn.Password.ToString()+"';";
 
                     MySqlDataReader dr = cmd.ExecuteReader();
 

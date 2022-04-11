@@ -10,7 +10,7 @@
         <TextBlock x:Name="txtUser" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20">Usuario</TextBlock>
         <TextBox x:Name="txtUserIn" VerticalAlignment="Center" HorizontalAlignment="Center" Width="150" />
         <TextBlock x:Name="txtPwd" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20">Contraseña</TextBlock>
-        <TextBox x:Name="txtPwdIn" VerticalAlignment="Center" HorizontalAlignment="Center" Width="150" />
+        <PasswordBox x:Name="txtPwdIn" VerticalAlignment="Center" HorizontalAlignment="Center" Width="150" />
         <Button x:Name="btnEnviar" Click="BtnEnviar_Click" Margin="40" Width="150">ENVIAR</Button>
     </StackPanel>
 </Window>
