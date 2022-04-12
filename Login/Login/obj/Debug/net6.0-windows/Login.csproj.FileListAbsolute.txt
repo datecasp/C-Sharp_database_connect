@@ -100,3 +100,4 @@ C:\Users\Danny\Documents\GitHub\C-Sharp_database_conect\Login\Login\obj\Debug\ne
 C:\Users\Danny\Documents\GitHub\C-Sharp_database_conect\Login\Login\obj\Debug\net6.0-windows\Login.pdb
 C:\Users\Danny\Documents\GitHub\C-Sharp_database_conect\Login\Login\obj\Debug\net6.0-windows\Login.genruntimeconfig.cache
 C:\Users\Danny\Documents\GitHub\C-Sharp_database_conect\Login\Login\obj\Debug\net6.0-windows\ref\Login.dll
+C:\Users\Danny\Documents\GitHub\C-Sharp_database_conect\Login\Login\bin\Debug\net6.0-windows\Login.dll.config

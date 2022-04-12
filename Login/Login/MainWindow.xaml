@@ -5,38 +5,91 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Login"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="400">
-    <Grid>
-        <Grid x:Name="grdMain" Visibility="Collapsed">
-            <StackPanel Margin="25">
-                <TextBlock x:Name="txtIntro" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20">FILL WITH YOUR CREDENTIALS</TextBlock>
-                <TextBlock x:Name="txtUser" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20">USER</TextBlock>
-                <TextBox x:Name="txtUserIn" VerticalAlignment="Center" HorizontalAlignment="Center" Width="150" />
-                <TextBlock x:Name="txtPwd" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20">PASSWORD</TextBlock>
-                <PasswordBox x:Name="txtPwdIn" VerticalAlignment="Center" HorizontalAlignment="Center" Width="150" />
-                <Button x:Name="btnEnviar" Click="BtnEnviar_Click" Margin="40" Width="150">SUBMIT</Button>
-            </StackPanel>
-        </Grid>
-        <Grid x:Name="grdTools" Visibility="Visible">
-            <StackPanel Margin="25">
-                <TextBlock x:Name="txtIntroTools" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="12">DATABASE MANAGEMENT TOOL</TextBlock>
-                <TextBlock x:Name="txtInfoTools" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10" FontSize="10">YOU CAN CREATE, SELECT OR DELETE DATABASE REGISTERS</TextBlock>
-                <TextBlock x:Name="txtInfoLogout" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10" FontSize="10">ALSO YOU CAN LOGOUT AND CLOSE CONNECTION</TextBlock>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <Button Width="100" Height="40" Margin="10" Grid.Column="0" Grid.Row="0">CREATE</Button>
-                    <Button Width="100" Height="40" Margin="10" Grid.Column="0" Grid.Row="1">SELECT</Button>
-                    <Button Width="100" Height="40" Margin="10" Grid.Column="1" Grid.Row="0">DELETE</Button>
-                    <Button Width="100" Height="40" Margin="10" Grid.Column="1" Grid.Row="1">LOGOUT</Button>
+        Title="MainWindow" Height="400" Width="400">
+    <StackPanel Margin="30">
+        <Grid>
+            <!--#region MAIN-->
+                <Grid x:Name="grdMain" Visibility="Visible">
+                    <StackPanel Margin="25">
+                        <TextBlock x:Name="txtIntro" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20">FILL WITH YOUR CREDENTIALS</TextBlock>
+                        <TextBlock x:Name="txtUser" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20" FontSize="10">USER</TextBlock>
+                        <TextBox x:Name="txtUserIn" VerticalAlignment="Center" HorizontalAlignment="Center" Width="150" />
+                        <TextBlock x:Name="txtPwd" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20" FontSize="10">PASSWORD</TextBlock>
+                        <PasswordBox x:Name="txtPwdIn" VerticalAlignment="Center" HorizontalAlignment="Center" Width="150" />
+                        <Button x:Name="btnEnviar" Click="BtnEnviar_Click" Margin="40" Width="150">SUBMIT</Button>
+                    </StackPanel>
                 </Grid>
+            <!--#endregion-->
+            <!--#region TOOLS-->
+                <Grid x:Name="grdTools" Visibility="Collapsed">
+                    <StackPanel Margin="25">
+                        <TextBlock x:Name="txtIntroTools" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10">DATABASE MANAGEMENT TOOL</TextBlock>
+                        <TextBlock x:Name="txtInfoTools" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10" FontSize="10">YOU CAN INSERT, SELECT OR DELETE DATABASE RECORDS</TextBlock>
+                        <TextBlock x:Name="txtInfoLogout" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10" FontSize="10">ALSO YOU CAN LOGOUT AND CLOSE CONNECTION</TextBlock>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Button Width="100" Height="40" Margin="10" Grid.Column="0" Grid.Row="0" Click="BtnInsert_Click">INSERT</Button>
+                            <Button Width="100" Height="40" Margin="10" Grid.Column="0" Grid.Row="1" Click="BtnSelect_Click">SELECT</Button>
+                            <Button Width="100" Height="40" Margin="10" Grid.Column="1" Grid.Row="0" Click="BtnDelete_Click">DELETE</Button>
+                            <Button Width="100" Height="40" Margin="10" Grid.Column="1" Grid.Row="1" Click="BtnLogout_Click">LOGOUT</Button>
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+            <!--#endregion-->
+            <!--#region INSERT -->
+                <Grid x:Name="grdInsert" Visibility="Collapsed">
+                    <TextBlock x:Name="txtInsert" HorizontalAlignment="Center" Margin="10">FILL TEXTBOX WITH DATA TO INSERT A NEW RECORD</TextBlock>
+                    <Grid Margin="10,41,0,230">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10" FontSize="10">INSERT USER</TextBlock>
+                        <TextBox x:Name="txtUserInsert" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10" Width="100"/>
+                        <TextBlock Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10" FontSize="10">INSERT PASS</TextBlock>
+                        <TextBox x:Name="txtPassInsert" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10" Width="100"/>
+                    </Grid>
+                    <Grid Margin="0,150,0,20">
+                        <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                    <Button x:Name="btnInsertData" Grid.Row="0" Width="150" Height="20" Click="BtnInsertData_Click">INSERT</Button>
+                    <Button x:Name="btnInsertBack" Grid.Row="1" Width="150" Height="20" Click="BtnBack_Click">BACK</Button>
+                    </Grid>
+                </Grid>
+            <!--#endregion-->
+            <!--#region DELETE-->
+                <StackPanel x:Name="stkDelete" Visibility="Collapsed">
+                    <TextBlock x:Name="txtDelete" HorizontalAlignment="Center" Margin="20">FILL TEXTBOX WITH DATA TO DELETE A RECORD</TextBlock>
+                    <TextBlock HorizontalAlignment="Center" Margin="10" FontSize="10">INSERT USER TO DELETE</TextBlock>
+                    <TextBox x:Name="txtUserDelete" HorizontalAlignment="Center" Margin="20" Width="100"/>
+                    <Button x:Name="btnDeleteData" Width="150" Height="20" Margin="20" Click="BtnDeleteData_Click">DELETE</Button>
+                    <Button x:Name="btnDeleteBack" Width="150" Height="20" Margin="20" Click="BtnBack_Click">BACK</Button>
+
+                </StackPanel>
+            <!--#endregion-->
+            <!--#region SELECT-->
+            <StackPanel x:Name="stkSelect" Visibility="Collapsed">
+                <TextBlock x:Name="txtSelect" HorizontalAlignment="Center" Margin="20">FILL TEXTBOX WITH DATA TO SELECT A RECORD</TextBlock>
+                <TextBlock HorizontalAlignment="Center" Margin="10" FontSize="10">INSERT USER TO SELECT</TextBlock>
+                <TextBox x:Name="txtUserSelect" HorizontalAlignment="Center" Margin="20" Width="100"/>
+                <Button x:Name="btnSelectData" Width="150" Height="20" Margin="20" Click="BtnSelectData_Click">SELECT</Button>
+                <Button x:Name="btnSelectBack" Width="150" Height="20" Margin="20" Click="BtnBack_Click">BACK</Button>
+
             </StackPanel>
+            <!--#endregion-->
         </Grid>
-    </Grid>
+    </StackPanel>
 </Window>
