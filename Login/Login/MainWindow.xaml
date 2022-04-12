@@ -5,18 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Login"
         mc:Ignorable="d"
-        Title="MainWindow" Height="400" Width="400">
+        Title="DB Manager" Height="400" Width="450">
     <StackPanel Margin="30">
         <Grid>
             <!--#region MAIN-->
                 <Grid x:Name="grdMain" Visibility="Visible">
                     <StackPanel Margin="25">
-                        <TextBlock x:Name="txtIntro" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20">FILL WITH YOUR CREDENTIALS</TextBlock>
+                        <TextBlock x:Name="txtIntro" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20">FILL WITH YOUR CREDENTIALS TO ACCESS DB</TextBlock>
                         <TextBlock x:Name="txtUser" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20" FontSize="10">USER</TextBlock>
                         <TextBox x:Name="txtUserIn" VerticalAlignment="Center" HorizontalAlignment="Center" Width="150" />
                         <TextBlock x:Name="txtPwd" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20" FontSize="10">PASSWORD</TextBlock>
                         <PasswordBox x:Name="txtPwdIn" VerticalAlignment="Center" HorizontalAlignment="Center" Width="150" />
-                        <Button x:Name="btnEnviar" Click="BtnEnviar_Click" Margin="40" Width="150">SUBMIT</Button>
+                        <Button x:Name="btnEnviar" Click="BtnSubmit_Click" Margin="40" Width="150">SUBMIT</Button>
                     </StackPanel>
                 </Grid>
             <!--#endregion-->

@@ -1,19 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Microsoft.Data.SqlClient;
+﻿using Microsoft.Data.SqlClient;
 using MySqlConnector;
+using System;
+using System.Windows;
 
 namespace Login
 {
@@ -29,12 +17,12 @@ namespace Login
             InitializeComponent();
         }
 
-        private void BtnEnviar_Click(object sender, RoutedEventArgs e)
+        private void BtnSubmit_Click(object sender, RoutedEventArgs e)
         {
             //This should be assigned in a private file for security
-            //Define Datasource and root user in app.config
-
+            //Define Datasource in app.config
             string strConn = "Data Source=127.0.0.1;";
+
             try
             {
                 SqlConnectionStringBuilder builder =
@@ -45,19 +33,17 @@ namespace Login
                 builder.Password = txtPwdIn.Password;
 
                 connection = new(builder.ConnectionString);
-                
+
                 connection.Open();
                 grdMain.Visibility = System.Windows.Visibility.Collapsed;
                 grdTools.Visibility = System.Windows.Visibility.Visible;
-                    
-                
             }
             catch (SqlException ex)
             {
                 MessageBox.Show(ex.ToString());
             }
-        
-    }
+
+        }
 
         //TOOLS UI REGION
         private void BtnInsert_Click(object sender, RoutedEventArgs e)
@@ -68,13 +54,13 @@ namespace Login
 
         private void BtnSelect_Click(object sender, RoutedEventArgs e)
         {
-            grdTools.Visibility=System.Windows.Visibility.Collapsed;
-            stkSelect.Visibility = System.Windows.Visibility.Visible;  
+            grdTools.Visibility = System.Windows.Visibility.Collapsed;
+            stkSelect.Visibility = System.Windows.Visibility.Visible;
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-            grdTools.Visibility=System.Windows.Visibility.Collapsed;
+            grdTools.Visibility = System.Windows.Visibility.Collapsed;
             stkDelete.Visibility = System.Windows.Visibility.Visible;
         }
 
@@ -86,11 +72,11 @@ namespace Login
 
 
         //INSERT
-        private void BtnInsertData_Click(object sender, RoutedEventArgs e)  
+        private void BtnInsertData_Click(object sender, RoutedEventArgs e)
         {
             //MessageBox.Show(connection.State.ToString());
-            try 
-            { 
+            try
+            {
                 MySqlCommand cmd = connection.CreateCommand();
                 cmd.CommandText = "INSERT INTO tec.credenciales (user, pwd) VALUES ('" + txtUserInsert.Text +
                     "','" + txtPassInsert.Text + "');";
@@ -99,7 +85,7 @@ namespace Login
                 cmd.ExecuteReader();
                 MessageBox.Show("INSERT DONE");
             }
-            catch (Exception ex)    
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
@@ -117,7 +103,7 @@ namespace Login
 
                 cmd.ExecuteReader();
                 MessageBox.Show("DELETE DONE");
-            }   
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
@@ -138,7 +124,7 @@ namespace Login
                 if (dr.HasRows)
                 {
                     dr.Read();
-                    MessageBox.Show("USER ="+dr.GetString(0) +" PWD =" +dr.GetString(1));
+                    MessageBox.Show("USER =" + dr.GetString(0) + " PWD =" + dr.GetString(1));
                 }
                 else
                 {
