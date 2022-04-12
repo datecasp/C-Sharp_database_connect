@@ -35,26 +35,42 @@ namespace Login
             //Define Datasource and root user in app.config
 
             string strConn = "Data Source=127.0.0.1;";
-            try
-            {
-                SqlConnectionStringBuilder builder =
-            new SqlConnectionStringBuilder(strConn);
 
-                // Supply the additional values.
-                builder.UserID = txtUserIn.Text;
-                builder.Password = txtPwdIn.Password;
+            if (txtUserIn.Text != "" && txtPwdIn.Password != "")
+            { 
+                try
+                {
+                    SqlConnectionStringBuilder builder =
+                new SqlConnectionStringBuilder(strConn);
 
-                connection = new(builder.ConnectionString);
-                
-                connection.Open();
-                grdMain.Visibility = System.Windows.Visibility.Collapsed;
-                grdTools.Visibility = System.Windows.Visibility.Visible;
+                    // Supply the additional values.
+                    builder.UserID = txtUserIn.Text;
+                    builder.Password = txtPwdIn.Password;
+
+                    connection = new(builder.ConnectionString);
+
+                    try
+                    {
+                        connection.Open();
+                        grdMain.Visibility = System.Windows.Visibility.Collapsed;
+                        grdTools.Visibility = System.Windows.Visibility.Visible;
+                    }
+                    catch
+                    {
+                        MessageBox.Show("USER/PASSWORD INCORRECT");
+                    }
+                    
                     
                 
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
             }
-            catch (SqlException ex)
+            else
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("ENTER YOUR CREDENTILALS");
             }
         
     }
