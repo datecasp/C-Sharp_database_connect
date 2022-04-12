@@ -38,8 +38,6 @@ namespace Login
 
             if (txtUserIn.Text != "" && txtPwdIn.Password != "")
             { 
-                try
-                {
                     SqlConnectionStringBuilder builder =
                 new SqlConnectionStringBuilder(strConn);
 
@@ -58,15 +56,7 @@ namespace Login
                     catch
                     {
                         MessageBox.Show("USER/PASSWORD INCORRECT");
-                    }
-                    
-                    
-                
-                }
-                catch (SqlException ex)
-                {
-                    MessageBox.Show(ex.ToString());
-                }
+                    }            
             }
             else
             {
