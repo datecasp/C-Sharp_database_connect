@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,7 +24,7 @@ namespace Login
     public partial class MainWindow : Window
     {
         MySqlConnection connection = null;
-
+        private string strConn;
         public MainWindow()
         {
             InitializeComponent();
@@ -33,8 +34,15 @@ namespace Login
         {
             //This should be assigned in a private file for security
             //Define Datasource and root user in app.config
-
-            string strConn = "Data Source=127.0.0.1;";
+            if (!string.IsNullOrEmpty(ConfigurationManager.AppSettings["DataSource"]))
+            { 
+                strConn = ConfigurationManager.AppSettings["DataSource"]; 
+            }
+            else
+            {
+                //Can´t read appconfig data
+                MessageBox.Show("NULL APPCONFIG");
+            }
 
             if (txtUserIn.Text != "" && txtPwdIn.Password != "")
             { 
