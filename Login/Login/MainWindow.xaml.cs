@@ -45,8 +45,7 @@ namespace Login
         private void BtnEnviar_Click(object sender, RoutedEventArgs e)
         {
             //This should be assigned in a private file for security
-            string strConn = "Data Source=127.0.0.1;"; //  User ID="+txtUserIn.Text.ToString()+ "; Password="+txtPwdIn.Password.ToString()+";";
-            
+            string strConn = "Data Source=127.0.0.1;";
             try
             {
                 SqlConnectionStringBuilder builder =
