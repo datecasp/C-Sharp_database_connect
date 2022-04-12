@@ -22,21 +22,6 @@ namespace Login
     /// </summary>
     public partial class MainWindow : Window
     {
-
-
-        /**************************************************************************************
-         * 
-         * 
-         *  CAMBIAR USUARIO CONTRASEÑA PARA QUE ENTRE LOS DATOS DE RELLENO EN STRCONN
-         * 
-         *  https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/connection-string-builders
-         * 
-         * 
-         * *************************************************************************************/
-
-
-
-
         public MainWindow()
         {
             InitializeComponent();
