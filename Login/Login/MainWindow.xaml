@@ -5,12 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Login"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <StackPanel Margin="25">
-        <TextBlock x:Name="txtUser" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20">Usuario</TextBlock>
-        <TextBox x:Name="txtUserIn" VerticalAlignment="Center" HorizontalAlignment="Center" Width="150" />
-        <TextBlock x:Name="txtPwd" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20">Contraseña</TextBlock>
-        <PasswordBox x:Name="txtPwdIn" VerticalAlignment="Center" HorizontalAlignment="Center" Width="150" />
-        <Button x:Name="btnEnviar" Click="BtnEnviar_Click" Margin="40" Width="150">ENVIAR</Button>
-    </StackPanel>
+        Title="MainWindow" Height="350" Width="400">
+    <Grid>
+        <Grid x:Name="grdMain" Visibility="Visible">
+            <StackPanel Margin="25">
+                <TextBlock x:Name="txtIntro" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20">FILL WITH YOUR CREDENTIALS</TextBlock>
+                <TextBlock x:Name="txtUser" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20">USER</TextBlock>
+                <TextBox x:Name="txtUserIn" VerticalAlignment="Center" HorizontalAlignment="Center" Width="150" />
+                <TextBlock x:Name="txtPwd" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20">PASSWORD</TextBlock>
+                <PasswordBox x:Name="txtPwdIn" VerticalAlignment="Center" HorizontalAlignment="Center" Width="150" />
+                <Button x:Name="btnEnviar" Click="BtnEnviar_Click" Margin="40" Width="150">SUBMIT</Button>
+            </StackPanel>
+        </Grid>
+        <Grid x:Name="grdTools" Visibility="Collapsed">
+            <StackPanel Margin="25">
+                <TextBlock x:Name="txtIntroTools" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20">DATABASE MANAGEMENT TOOL</TextBlock>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Button Grid.Column="0" Grid.Row="0">uno</Button>
+                    <Button Grid.Column="0" Grid.Row="1">uno</Button>
+                    <Button Grid.Column="1" Grid.Row="0">uno</Button>
+                    <Button Grid.Column="1" Grid.Row="1">uno</Button>
+                </Grid>
+            </StackPanel>
+        </Grid>
+    </Grid>
 </Window>

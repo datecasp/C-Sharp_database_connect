@@ -22,6 +22,17 @@ namespace Login
     /// </summary>
     public partial class MainWindow : Window
     {
+
+
+
+        /********************************************************************************
+         * 
+         * https://stackoverflow.com/questions/29729658/wpf-open-new-window-in-wpf
+         * 
+         * Para sustituir UI de login por UI de herramientas SQL
+         * 
+         * ******************************************************************************/
+
         public MainWindow()
         {
             InitializeComponent();
@@ -44,6 +55,11 @@ namespace Login
                 {
                     connection.Open();
                     MessageBox.Show(connection.State.ToString());
+
+                    //CAMBIO DE INTERFAZ MAIN A HERRAMIENTAS SQL
+
+                    grdMain.Visibility = System.Windows.Visibility.Collapsed;
+                    grdTools.Visibility = System.Windows.Visibility.Visible;
                     connection.Close(); 
                 }
             }
