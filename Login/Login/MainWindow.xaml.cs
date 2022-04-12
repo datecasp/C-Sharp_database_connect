@@ -23,6 +23,7 @@ namespace Login
     public partial class MainWindow : Window
     {
 
+<<<<<<< HEAD
 
 
         /********************************************************************************
@@ -33,6 +34,8 @@ namespace Login
          * 
          * ******************************************************************************/
 
+=======
+>>>>>>> a62690b1b3689de145a2b26cb3ca8465d958d744
         public MainWindow()
         {
             InitializeComponent();
@@ -41,6 +44,8 @@ namespace Login
         private void BtnEnviar_Click(object sender, RoutedEventArgs e)
         {
             //This should be assigned in a private file for security
+            //Define Datasource and root user in app.config
+
             string strConn = "Data Source=127.0.0.1;";
             try
             {
