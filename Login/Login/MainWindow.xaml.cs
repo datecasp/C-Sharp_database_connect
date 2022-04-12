@@ -23,20 +23,6 @@ namespace Login
     public partial class MainWindow : Window
     {
 
-
-        /**************************************************************************************
-         * 
-         * 
-         *  CAMBIAR USUARIO CONTRASEÑA PARA QUE ENTRE LOS DATOS DE RELLENO EN STRCONN
-         * 
-         *  https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/connection-string-builders
-         * 
-         * 
-         * *************************************************************************************/
-
-
-
-
         public MainWindow()
         {
             InitializeComponent();
@@ -45,6 +31,8 @@ namespace Login
         private void BtnEnviar_Click(object sender, RoutedEventArgs e)
         {
             //This should be assigned in a private file for security
+            //Define Datasource and root user in app.config
+
             string strConn = "Data Source=127.0.0.1;";
             try
             {
