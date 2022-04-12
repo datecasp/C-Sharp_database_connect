@@ -22,9 +22,21 @@ namespace Login
     /// </summary>
     public partial class MainWindow : Window
     {
-        //This should be assigned in a private file for security
-        readonly string strConn = "Data Source=127.0.0.1; Initial Catalog=tec; User ID=test1; Password=1234;";
-        
+
+
+        /**************************************************************************************
+         * 
+         * 
+         *  CAMBIAR USUARIO CONTRASEÑA PARA QUE ENTRE LOS DATOS DE RELLENO EN STRCONN
+         * 
+         *  https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/connection-string-builders
+         * 
+         * 
+         * *************************************************************************************/
+
+
+
+
         public MainWindow()
         {
             InitializeComponent();
@@ -32,12 +44,22 @@ namespace Login
 
         private void BtnEnviar_Click(object sender, RoutedEventArgs e)
         {
+            //This should be assigned in a private file for security
+            string strConn = "Data Source=127.0.0.1;"; //  User ID="+txtUserIn.Text.ToString()+ "; Password="+txtPwdIn.Password.ToString()+";";
+            
             try
             {
-                using (MySqlConnection connection = new(strConn))
+                SqlConnectionStringBuilder builder =
+            new SqlConnectionStringBuilder(strConn);
+
+                // Supply the additional values.
+                builder.UserID = txtUserIn.Text;
+                builder.Password = txtPwdIn.Password;
+
+                using (MySqlConnection connection = new(builder.ConnectionString))
                 {
-                
                     connection.Open();
+                    MessageBox.Show(connection.State.ToString());
 
                     /*****************************************************
                      * 
@@ -54,10 +76,10 @@ namespace Login
                      *  
                      *  so User/Password are ok and Login is correct
                      * 
-                     * *****************************************************/
+                     * ****************************************************
 
                     MySqlCommand cmd = connection.CreateCommand(); 
-                    cmd.CommandText = "SELECT user, pwd FROM credenciales WHERE user='"+txtUserIn.Text+
+                    cmd.CommandText = "SELECT user, pwd FROM tec.credenciales WHERE user='"+txtUserIn.Text+
                         "' AND pwd='"+txtPwdIn.Password.ToString()+"';";
 
                     MySqlDataReader dr = cmd.ExecuteReader();
@@ -70,6 +92,8 @@ namespace Login
                     {
                         MessageBox.Show("WRONG USER/PASSWORD");
                     }
+                    */
+
                     connection.Close(); 
                 }
             }
