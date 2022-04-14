@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Data.SqlClient;
 using MySqlConnector;
+using Login.Tools;
 
 namespace Login
 {
@@ -45,7 +46,7 @@ namespace Login
             }
 
             if (txtUserIn.Text != "" && txtPwdIn.Password != "")
-            { 
+            {
                     SqlConnectionStringBuilder builder =
                 new SqlConnectionStringBuilder(strConn);
 
@@ -121,6 +122,7 @@ namespace Login
             {
                 MessageBox.Show(ex.ToString());
             }
+            Tools.Tools.ResetTextBoxes();
         }
 
         //DELETE
@@ -138,11 +140,12 @@ namespace Login
 
                 cmd.ExecuteReader();
                 MessageBox.Show("DELETE DONE");
-            }   
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
+            Tools.Tools.ResetTextBoxes();
         }
 
         //SELECT
@@ -161,8 +164,10 @@ namespace Login
 
                 if (dr.HasRows)
                 {
-                    dr.Read();
-                    MessageBox.Show("USER ="+dr.GetString(0) +" PWD =" +dr.GetString(1));
+                    while(dr.Read())
+                    {
+                        MessageBox.Show("USER =" + dr.GetString(0) + " PWD =" + dr.GetString(1));
+                    }
                 }
                 else
                 {
@@ -182,6 +187,8 @@ namespace Login
             grdInsert.Visibility = System.Windows.Visibility.Collapsed;
             stkDelete.Visibility = System.Windows.Visibility.Collapsed;
             stkSelect.Visibility = System.Windows.Visibility.Collapsed;
+            Tools.Tools.ResetTextBoxes();
+
         }
     }
 }
