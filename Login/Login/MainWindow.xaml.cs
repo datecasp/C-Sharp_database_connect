@@ -31,7 +31,7 @@ namespace Login
             InitializeComponent();
         }
 
-        private void BtnEnviar_Click(object sender, RoutedEventArgs e)
+        private void BtnSubmit_Click(object sender, RoutedEventArgs e)
         {
             //Read DataSource from App.Config
             if (!string.IsNullOrEmpty(ConfigurationManager.AppSettings["DataSource"]))
