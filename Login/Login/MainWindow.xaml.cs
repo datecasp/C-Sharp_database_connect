@@ -25,6 +25,7 @@ namespace Login
     {
         MySqlConnection connection = null;
         private string strConn;
+        private string finalStrConn;
         public MainWindow()
         {
             InitializeComponent();
@@ -32,15 +33,14 @@ namespace Login
 
         private void BtnEnviar_Click(object sender, RoutedEventArgs e)
         {
-            //This should be assigned in a private file for security
-            //Define Datasource and root user in app.config
+            //Read DataSource from App.Config
             if (!string.IsNullOrEmpty(ConfigurationManager.AppSettings["DataSource"]))
             { 
                 strConn = ConfigurationManager.AppSettings["DataSource"]; 
             }
             else
             {
-                //Can´t read appconfig data
+                //Can´t read app.config data
                 MessageBox.Show("NULL APPCONFIG");
             }
 
@@ -54,6 +54,7 @@ namespace Login
                     builder.Password = txtPwdIn.Password;
 
                     connection = new(builder.ConnectionString);
+                    finalStrConn = connection.ConnectionString; 
 
                     try
                     {
@@ -105,6 +106,9 @@ namespace Login
             //MessageBox.Show(connection.State.ToString());
             try 
             { 
+                connection.Close();
+                connection.Open();
+
                 MySqlCommand cmd = connection.CreateCommand();
                 cmd.CommandText = "INSERT INTO tec.credenciales (user, pwd) VALUES ('" + txtUserInsert.Text +
                     "','" + txtPassInsert.Text + "');";
@@ -124,6 +128,9 @@ namespace Login
         {
             try
             {
+                connection.Close();
+                connection.Open();
+
                 MySqlCommand cmd = connection.CreateCommand();
                 cmd.CommandText = "DELETE FROM tec.credenciales WHERE user='" + txtUserDelete.Text +
                     "';";
@@ -143,6 +150,9 @@ namespace Login
         {
             try
             {
+                connection.Close();
+                connection.Open();
+
                 MySqlCommand cmd = connection.CreateCommand();
                 cmd.CommandText = "SELECT user, pwd FROM tec.credenciales WHERE user='" + txtUserSelect.Text +
                     "';";
